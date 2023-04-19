@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_fragment1"
+        android:icon="@drawable/main_nav_home_ic"
+        android:title="@string/main_nav_home" />
+    <item
+        android:id="@+id/nav_fragment2"
+        android:icon="@drawable/main_nav_question_answer_ic"
+        android:title="@string/main_nav_question" />
+    <item
+        android:id="@+id/nav_fragment3"
+        android:icon="@drawable/main_nav_architecture_ic"
+        android:title="@string/main_nav_architecture" />
+    <item
+        android:id="@+id/nav_fragment4"
+        android:icon="@drawable/main_nav_profile_ic"
+        android:title="@string/main_nav_profile" />
+</menu>

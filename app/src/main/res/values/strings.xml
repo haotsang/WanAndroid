@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WanAndroid</string>
+
+    <string name="main_nav_home">首页</string>
+    <string name="main_nav_question">问答</string>
+    <string name="main_nav_architecture">体系</string>
+    <string name="main_nav_profile">我的</string>
+    <string name="common_loading">加载中...</string>
+
+
+</resources>

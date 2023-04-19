@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/item_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="126dp"
+                android:layout_height="126dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/layout_margin_16"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/layout_margin_16"
+                android:text="登录/注册" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="@dimen/padding_6dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/layout_margin_16"
+            android:text="我的积分"
+            android:textSize="@dimen/text_size_16sp"
+            app:drawableEndCompat="@drawable/arrow_forward_ic"
+            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="@dimen/padding_6dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/layout_margin_16"
+            android:text="我的收藏"
+            android:textSize="@dimen/text_size_16sp"
+            app:drawableEndCompat="@drawable/arrow_forward_ic"
+            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="@dimen/padding_6dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/layout_margin_16"
+            android:text="我的书签"
+            android:textSize="@dimen/text_size_16sp"
+            app:drawableEndCompat="@drawable/arrow_forward_ic"
+            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="@dimen/padding_6dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/layout_margin_16"
+            android:text="阅读历史"
+            android:textSize="@dimen/text_size_16sp"
+            app:drawableEndCompat="@drawable/arrow_forward_ic"
+            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="@dimen/padding_6dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/layout_margin_16"
+            android:text="开源项目"
+            android:textSize="@dimen/text_size_16sp"
+            app:drawableEndCompat="@drawable/arrow_forward_ic"
+            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="@dimen/padding_6dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/layout_margin_16"
+            android:text="关于作者"
+            android:textSize="@dimen/text_size_16sp"
+            app:drawableEndCompat="@drawable/arrow_forward_ic"
+            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="@dimen/padding_6dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/layout_margin_16"
+            android:text="设置"
+            android:textSize="@dimen/text_size_16sp"
+            app:drawableEndCompat="@drawable/arrow_forward_ic"
+            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
