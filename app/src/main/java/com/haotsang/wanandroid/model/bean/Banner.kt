@@ -5,7 +5,7 @@ import androidx.annotation.Keep
 @Keep
 data class Banner(
     val desc: String,
-    val id: Int,
+    val id: Long,
     val imagePath: String,
     val isVisible: Int,
     val order: Int,

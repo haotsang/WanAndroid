@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.WanAndroid" parent="Base.Theme.WanAndroid">
+        <item name="android:windowSplashScreenBackground">@color/bg_splash</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_launcher</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+    </style>
+
+</resources>

@@ -1,25 +1,17 @@
 package com.haotsang.wanandroid.ui.navigation
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import com.haotsang.wanandroid.base.BaseViewBindingFragment
+import com.haotsang.wanandroid.base.BaseVmFragment
 import com.haotsang.wanandroid.databinding.NavigationFragmentBinding
 
-class NavigationFragment : BaseViewBindingFragment<NavigationFragmentBinding>() {
+class NavigationFragment :
+    BaseVmFragment<NavigationFragmentBinding, NavigationViewModel>(NavigationFragmentBinding::inflate) {
 
-    private val viewModel : NavigationViewModel by viewModels()
     private lateinit var adapter: NavigationAdapter
 
-    override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): NavigationFragmentBinding {
-        return NavigationFragmentBinding.inflate(inflater, container, false)
-    }
+    override fun viewModelClass(): Class<NavigationViewModel>  = NavigationViewModel::class.java
 
     override fun observe() {
-        viewModel.getNavigationObserve().observe(this) {
+        mViewModel.getNavigationObserve().observe(this) {
             adapter.setList(it)
         }
     }
@@ -32,11 +24,11 @@ class NavigationFragment : BaseViewBindingFragment<NavigationFragmentBinding>() 
         flexboxLayoutManager.setAlignItems(com.google.android.flexbox.AlignItems.STRETCH)
 
         adapter = NavigationAdapter()
-        binding?.recyclerview?.layoutManager = flexboxLayoutManager
-        binding?.recyclerview?.adapter = adapter
+        mBinding?.recyclerview?.layoutManager = flexboxLayoutManager
+        mBinding?.recyclerview?.adapter = adapter
     }
 
     override fun initData() {
-        viewModel.getNavigationData()
+        mViewModel.getNavigationData()
     }
 }

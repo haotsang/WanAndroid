@@ -1,4 +1,6 @@
 package com.haotsang.wanandroid.ui.profile
 
-class ProfileViewModel {
+import com.haotsang.wanandroid.base.BaseViewModel
+
+class ProfileViewModel : BaseViewModel() {
 }

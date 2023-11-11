@@ -6,6 +6,60 @@
     <string name="main_nav_architecture">体系</string>
     <string name="main_nav_profile">我的</string>
     <string name="common_loading">加载中...</string>
+    <string name="action_search">搜索</string>
+    <string name="author">haotsang</string>
 
+    <string name="large_text">
+        "用到的库：\n\n"
+        "okhttp\n\n"
+        "retrofit\n\n"
+        "rxjava2\n\n"
+        "BRVAH\n\n"
+        "banner\n\n"
+        "glide\n\n"
+        "flowlayout\n\n"
+        "jetpack..\n\n"
+    </string>
+    <string name="hot_search">热门搜索</string>
+    <string name="search_history">搜索历史</string>
+
+    <string name="my_points">我的积分</string>
+    <string name="my_points_rank">积分排行</string>
+
+    <string name="level_rank">等级: %1$d\t\t\t排名: %2$d</string>
+
+    <string name="user_rank_info">积分: %1$d 等级: %2$d 排名: %3$d</string>
+
+    <string name="load_failed">加载失败，请点击重试</string>
+    <string name="load_end">没有更多了</string>
+    <string name="load_complete">点击加载更多</string>
+    <string name="loading">正在加载中&#8230;</string>
+    <string name="reload">重新加载</string>
+    <string name="network_not_available">网络似乎除了点问题&#8230;</string>
+    <string name="no_data">没有相关数据</string>
+
+    <string name="login">登录</string>
+    <string name="account">账号</string>
+    <string name="password">密码</string>
+    <string name="go_register">去注册</string>
+    <string name="wanandroid">WANANDROID</string>
+    <string name="register">注册</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="account_can_not_be_empty">账号不能为空</string>
+    <string name="password_can_not_be_empty">密码不能为空</string>
+    <string name="account_length_over_three">账号不能少于3位</string>
+    <string name="password_length_over_six">密码不能少于6位</string>
+    <string name="confirm_password_can_not_be_empty">确认密码不能为空</string>
+    <string name="two_password_are_inconsistent">两次输入的密码不一致</string>
+    <string name="logging_in">正在登陆&#8230;</string>
+    <string name="registerring">正在注册&#8230;</string>
+
+    <string name="network_connection_failed">网络连接失败</string>
+    <string name="network_request_failed">网络请求失败</string>
+    <string name="network_request_timeout">网络请求超时</string>
+    <string name="api_data_parse_error">数据解析错误</string>
+    <string name="top">置顶</string>
+    <string name="fresh">新</string>
+    <string name="anonymous">匿名</string>
 
 </resources>

@@ -10,6 +10,33 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.haotsang.wanandroid.R
 
+/*
+
+    private lateinit var progressDialogFragment: ProgressDialogFragment
+
+    /**
+     * 显示加载(转圈)对话框
+     */
+    fun showProgressDialog(@StringRes message: Int) {
+        if (!this::progressDialogFragment.isInitialized) {
+            progressDialogFragment = ProgressDialogFragment.newInstance()
+        }
+        if (!progressDialogFragment.isAdded) {
+            progressDialogFragment.show(supportFragmentManager, message, false)
+        }
+    }
+
+    /**
+     * 隐藏加载(转圈)对话框
+     */
+    fun dismissProgressDialog() {
+        if (this::progressDialogFragment.isInitialized && progressDialogFragment.isVisible) {
+            progressDialogFragment.dismissAllowingStateLoss()
+        }
+    }
+
+ */
+
 
 class ProgressDialogFragment : DialogFragment() {
 

@@ -2,12 +2,10 @@ package com.haotsang.wanandroid.ui.navigation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.haotsang.wanandroid.base.BaseViewModel
 import com.haotsang.wanandroid.model.bean.Navigation
-import kotlinx.coroutines.launch
 
-class NavigationViewModel : ViewModel() {
+class NavigationViewModel : BaseViewModel() {
 
     private val repository by lazy { NavigationRepository() }
 
@@ -21,9 +19,11 @@ class NavigationViewModel : ViewModel() {
     }
 
     fun getNavigationData() {
-        viewModelScope.launch {
-            navigation.postValue(repository.getNavigation())
-        }
+        launch(
+            block = {
+                navigation.postValue(repository.getNavigation())
+            }
+        )
     }
 
 }

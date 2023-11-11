@@ -1,6 +1,9 @@
 package com.haotsang.wanandroid.model.api
 
 import android.util.Log
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.haotsang.wanandroid.App
 import com.haotsang.wanandroid.utils.MoshiHelper
 import com.haotsang.wanandroid.utils.NetWorkUtils
@@ -17,6 +20,10 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
+
+    /**Cookie*/
+    private val cookiePersistor = SharedPrefsCookiePersistor(App.instance)
+    private val cookieJar = PersistentCookieJar(SetCookieCache(), cookiePersistor)
 
     /**log**/
     private val logger = HttpLoggingInterceptor.Logger {
@@ -65,11 +72,14 @@ object RetrofitClient {
 
     /**OkhttpClient*/
     private val okHttpClient = OkHttpClient.Builder()
-        .callTimeout(10, TimeUnit.SECONDS)
-        .retryOnConnectionFailure(true)
+//        .callTimeout(10, TimeUnit.SECONDS)
+//        .retryOnConnectionFailure(true)
+        .connectTimeout(10, TimeUnit.SECONDS)
+        .readTimeout(10,TimeUnit.SECONDS)
         .cache(cache)
-        .addInterceptor(offlineCacheInterceptor)
-        .addNetworkInterceptor(netCacheInterceptor)
+        .cookieJar(cookieJar)
+//        .addInterceptor(offlineCacheInterceptor)
+//        .addNetworkInterceptor(netCacheInterceptor)
         .addNetworkInterceptor(logInterceptor)
         .build()
 
@@ -83,4 +93,10 @@ object RetrofitClient {
     /**ApiService*/
     val apiService: ApiService = retrofit.create(ApiService::class.java)
 
+
+    /**清除Cookie*/
+    fun clearCookie() = cookieJar.clear()
+
+    /**是否有Cookie*/
+    fun hasCookie() = cookiePersistor.loadAll().isNotEmpty()
 }

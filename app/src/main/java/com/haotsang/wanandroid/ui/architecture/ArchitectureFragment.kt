@@ -1,25 +1,23 @@
 package com.haotsang.wanandroid.ui.architecture
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import com.haotsang.wanandroid.base.BaseViewBindingFragment
+import android.view.View
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnItemClickListener
+import com.haotsang.wanandroid.base.BaseVmFragment
 import com.haotsang.wanandroid.databinding.ArchitectureFragmentBinding
+import com.haotsang.wanandroid.ui.architecture.children.TreeChildFragment
+import com.haotsang.wanandroid.ui.main.MainActivity
+import com.haotsang.wanandroid.utils.ext.setOnItemClickListener
 
-class ArchitectureFragment : BaseViewBindingFragment<ArchitectureFragmentBinding>() {
+class ArchitectureFragment :
+    BaseVmFragment<ArchitectureFragmentBinding, ArchitectureViewModel>(ArchitectureFragmentBinding::inflate) {
 
-    private val viewModel : ArchitectureViewModel by viewModels()
     private lateinit var adapter: ArchitectureAdapter
 
-    override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): ArchitectureFragmentBinding {
-        return ArchitectureFragmentBinding.inflate(inflater, container, false)
-    }
+    override fun viewModelClass(): Class<ArchitectureViewModel> = ArchitectureViewModel::class.java
 
     override fun observe() {
-        viewModel.getArchitectureObserve().observe(this) {
+        mViewModel.getArchitectureObserve().observe(this) {
             adapter.setList(it)
         }
     }
@@ -32,11 +30,17 @@ class ArchitectureFragment : BaseViewBindingFragment<ArchitectureFragmentBinding
         flexboxLayoutManager.setAlignItems(com.google.android.flexbox.AlignItems.STRETCH)
 
         adapter = ArchitectureAdapter()
-        binding?.recyclerview?.layoutManager = flexboxLayoutManager
-        binding?.recyclerview?.adapter = adapter
+        mBinding?.recyclerview?.layoutManager = flexboxLayoutManager
+        mBinding?.recyclerview?.adapter = adapter
+
+
     }
 
     override fun initData() {
-        viewModel.getArchitectureData()
+        mViewModel.getArchitectureData()
+    }
+
+    override fun setListener() {
+
     }
 }

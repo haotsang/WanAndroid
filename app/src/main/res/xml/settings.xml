@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:key="normalCategory"
+        app:title="normal">
+
+        <Preference
+            app:key="set"
+            app:title="select wallpaper" />
+
+        <Preference
+            app:key="reset"
+            app:title="reset bg" />
+
+        <Preference
+            app:key="logout"
+            app:title="logout" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

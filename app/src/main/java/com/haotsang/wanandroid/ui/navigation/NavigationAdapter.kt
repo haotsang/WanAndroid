@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.flexbox.FlexboxLayout
 import com.haotsang.wanandroid.R
 import com.haotsang.wanandroid.model.bean.Navigation
-import com.haotsang.wanandroid.utils.BrowserUtils
+import com.haotsang.wanandroid.ui.browser.BrowserFragment
 import java.util.LinkedList
 import java.util.Queue
 
@@ -26,7 +26,7 @@ class NavigationAdapter(
         for (article in item.articles) {
             val tvChild =  createOrGetCacheFlexItemTextView(fbl)?.apply {
                 text = article.title
-                setOnClickListener { BrowserUtils.openInBrowser(it.context, article.link) }
+//                setOnClickListener { BrowserFragment.openUrl(it.context, article.link) }
             }
             fbl.addView(tvChild)
         }

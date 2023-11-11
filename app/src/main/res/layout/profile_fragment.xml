@@ -1,125 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/item_container"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
 
-        <LinearLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            app:collapsedTitleTextColor="?colorPrimary"
+            app:contentScrim="?android:attr/colorBackground"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleCollapseMode="scale"
+            app:toolbarId="@+id/toolbar">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="126dp"
-                android:layout_height="126dp"
-                android:layout_gravity="center"
-                android:layout_marginVertical="@dimen/layout_margin_16"
-                app:srcCompat="@mipmap/ic_launcher" />
-
-            <TextView
-                android:id="@+id/textView"
-                style="@style/TextAppearance.Material3.TitleLarge"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/userAvatarLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginVertical="@dimen/layout_margin_16"
-                android:text="登录/注册" />
-        </LinearLayout>
+                android:paddingTop="?attr/actionBarSize"
+                android:paddingBottom="?attr/actionBarSize"
+                app:layout_collapseMode="parallax">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/selectableItemBackground"
-            android:drawablePadding="@dimen/padding_6dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/layout_margin_16"
-            android:text="我的积分"
-            android:textSize="@dimen/text_size_16sp"
-            app:drawableEndCompat="@drawable/arrow_forward_ic"
-            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+                <ImageView
+                    android:id="@+id/userAvatar"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/baseline_face_48"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="?colorControlNormal"
+                    tools:ignore="ContentDescription" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/selectableItemBackground"
-            android:drawablePadding="@dimen/padding_6dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/layout_margin_16"
-            android:text="我的收藏"
-            android:textSize="@dimen/text_size_16sp"
-            app:drawableEndCompat="@drawable/arrow_forward_ic"
-            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="未登录"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/userId"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/userAvatar"
+                    app:layout_constraintTop_toTopOf="@+id/userAvatar"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="Lowae" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/selectableItemBackground"
-            android:drawablePadding="@dimen/padding_6dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/layout_margin_16"
-            android:text="我的书签"
-            android:textSize="@dimen/text_size_16sp"
-            app:drawableEndCompat="@drawable/arrow_forward_ic"
-            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+                <TextView
+                    android:id="@+id/userId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="用户id"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@id/userCoinCount"
+                    app:layout_constraintStart_toStartOf="@+id/userName"
+                    app:layout_constraintTop_toBottomOf="@+id/userName" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/selectableItemBackground"
-            android:drawablePadding="@dimen/padding_6dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/layout_margin_16"
-            android:text="阅读历史"
-            android:textSize="@dimen/text_size_16sp"
-            app:drawableEndCompat="@drawable/arrow_forward_ic"
-            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+                <TextView
+                    android:id="@+id/userCoinCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:text="积分: 100 等级: 1 排名: 1000"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="12sp"
+                    app:drawableEndCompat="@drawable/arrow_forward_ic"
+                    app:layout_constraintBottom_toBottomOf="@+id/userAvatar"
+                    app:layout_constraintStart_toStartOf="@+id/userName"
+                    app:layout_constraintTop_toBottomOf="@+id/userId"
+                    tools:text="积分: 100 等级: 1 排名: 1000" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/selectableItemBackground"
-            android:drawablePadding="@dimen/padding_6dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/layout_margin_16"
-            android:text="开源项目"
-            android:textSize="@dimen/text_size_16sp"
-            app:drawableEndCompat="@drawable/arrow_forward_ic"
-            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/userinfoArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="userAvatar,userName,userId,userCoinCount" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/selectableItemBackground"
-            android:drawablePadding="@dimen/padding_6dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/layout_margin_16"
-            android:text="关于作者"
-            android:textSize="@dimen/text_size_16sp"
-            app:drawableEndCompat="@drawable/arrow_forward_ic"
-            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/selectableItemBackground"
-            android:drawablePadding="@dimen/padding_6dp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/layout_margin_16"
-            android:text="设置"
-            android:textSize="@dimen/text_size_16sp"
-            app:drawableEndCompat="@drawable/arrow_forward_ic"
-            app:drawableStartCompat="@drawable/main_nav_architecture_ic" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="Profile"
+                app:layout_collapseMode="pin">
 
-    </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
 
-</androidx.core.widget.NestedScrollView>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
+    <include
+        android:id="@+id/itemContainer"
+        layout="@layout/profile_item_list_include" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/settingFabIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@null"
+        app:layout_anchor="@id/appBarLayout"
+        app:layout_anchorGravity="bottom|end"
+        app:maxImageSize="32dp"
+        app:srcCompat="@drawable/baseline_settings_suggest_24" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

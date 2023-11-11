@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="bg">#eee</color>
+    <color name="bg_splash">#FF625B71</color>
+    <color name="accent">#FF625B71</color>
+    <color name="primary">#FF6750A4</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
     <color name="ripper">#FF21272B</color>
+
+    <color name="line">#DCDCDC</color>
+    <color name="colorRipple">#E2E2E2</color>
+    <color name="colorBadge">#FC1603</color>
+    <color name="textColorPrimary">#1B1B1D</color>
+    <color name="textColorSecondary">#6B7178</color>
+    <color name="textColorThird">#9297A2</color>
 </resources>

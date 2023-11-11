@@ -1,8 +1,66 @@
 package com.haotsang.wanandroid.utils.ext
 
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.marginBottom
+import androidx.core.view.marginEnd
+import androidx.core.view.marginStart
+import androidx.core.view.marginTop
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMarginsRelative
+import androidx.core.view.updatePaddingRelative
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+
+fun View.addSystemWindowInsetToPadding(
+    left: Boolean = false,
+    top: Boolean = false,
+    right: Boolean = false,
+    bottom: Boolean = false
+) {
+    val (initialLeft, initialTop, initialRight, initialBottom) =
+        listOf(paddingStart, paddingTop, paddingEnd, paddingBottom)
+
+    ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
+        val typeInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        view.updatePaddingRelative(
+            start = initialLeft + (if (left) typeInsets.left else 0),
+            top = initialTop + (if (top) typeInsets.top else 0),
+            end = initialRight + (if (right) typeInsets.right else 0),
+            bottom = initialBottom + (if (bottom) typeInsets.bottom else 0)
+        )
+
+        insets
+    }
+}
+
+fun View.addSystemWindowInsetToMargin(
+    left: Boolean = false,
+    top: Boolean = false,
+    right: Boolean = false,
+    bottom: Boolean = false
+) {
+    val (initialLeft, initialTop, initialRight, initialBottom) =
+        listOf(marginStart, marginTop, marginEnd, marginBottom)
+
+    ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
+        val typeInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        view.updateLayoutParams {
+            (this as? ViewGroup.MarginLayoutParams)?.let {
+                updateMarginsRelative(
+                    start = initialLeft + (if (left) typeInsets.left else 0),
+                    top = initialTop + (if (top) typeInsets.top else 0),
+                    end = initialRight + (if (right) typeInsets.right else 0),
+                    bottom = initialBottom + (if (bottom) typeInsets.bottom else 0)
+                )
+            }
+        }
+
+        insets
+    }
+}
 
 fun RecyclerView.setOnItemClickListener(onItemClickListener: ((holder: RecyclerView.ViewHolder, position: Int) -> Unit)?) {
     val mAttachListener: RecyclerView.OnChildAttachStateChangeListener = object : RecyclerView.OnChildAttachStateChangeListener {

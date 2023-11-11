@@ -6,5 +6,7 @@ class HomeRepository {
 
     suspend fun getBanners() = RetrofitClient.apiService.getBanners().apiData()
 
-//    suspend fun getHotWords() = RetrofitClient.apiService.getHotWords().apiData()
+    suspend fun getTopArticleList() = RetrofitClient.apiService.getTopArticleList().apiData()
+    suspend fun getArticleList(page: Int) = RetrofitClient.apiService.getArticleList(page).apiData()
+
 }

@@ -2,12 +2,10 @@ package com.haotsang.wanandroid.ui.architecture
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.haotsang.wanandroid.base.BaseViewModel
 import com.haotsang.wanandroid.model.bean.Category
-import kotlinx.coroutines.launch
 
-class ArchitectureViewModel : ViewModel() {
+class ArchitectureViewModel : BaseViewModel() {
 
     private val repository by lazy { ArchitectureRepository() }
 
@@ -22,9 +20,11 @@ class ArchitectureViewModel : ViewModel() {
     }
 
     fun getArchitectureData() {
-        viewModelScope.launch {
-            architecture.postValue(repository.getArchitecture())
-        }
+        launch(
+            block = {
+                architecture.postValue(repository.getArchitecture())
+            }
+        )
     }
 
 

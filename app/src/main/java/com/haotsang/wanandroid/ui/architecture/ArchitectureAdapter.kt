@@ -7,6 +7,9 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.flexbox.FlexboxLayout
 import com.haotsang.wanandroid.R
 import com.haotsang.wanandroid.model.bean.Category
+import com.haotsang.wanandroid.ui.architecture.children.TreeChildFragment
+import com.haotsang.wanandroid.ui.main.MainActivity
+import com.haotsang.wanandroid.utils.ext.activity
 import java.util.LinkedList
 import java.util.Queue
 
@@ -24,7 +27,14 @@ class ArchitectureAdapter(
         for (cate in item.children) {
             val tvChild =  createOrGetCacheFlexItemTextView(fbl)?.apply {
                 text = cate.name
-                setOnClickListener {  }
+                setOnClickListener {
+                    (context.activity as MainActivity).switchFragmentPage(
+                        TreeChildFragment.newInstance(
+                            1,
+                            cate.children
+                        )
+                    )
+                }
             }
             fbl.addView(tvChild)
         }

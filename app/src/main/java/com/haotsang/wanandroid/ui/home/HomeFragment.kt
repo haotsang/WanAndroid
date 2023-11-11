@@ -1,50 +1,82 @@
 package com.haotsang.wanandroid.ui.home
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import com.haotsang.wanandroid.base.BaseViewBindingFragment
+import com.haotsang.wanandroid.R
+import com.haotsang.wanandroid.base.BaseVmFragment
+import com.haotsang.wanandroid.common.adapter.ArticleAdapter
 import com.haotsang.wanandroid.common.adapter.BannerImageAdapter2
+import com.haotsang.wanandroid.common.loadmore.setLoadMoreStatus
 import com.haotsang.wanandroid.databinding.HomeFragmentBinding
+import com.haotsang.wanandroid.model.bean.Article
 import com.haotsang.wanandroid.model.bean.Banner
-import com.haotsang.wanandroid.utils.BrowserUtils
+import com.haotsang.wanandroid.ui.browser.BrowserFragment
 import com.youth.banner.indicator.CircleIndicator
 
-class HomeFragment : BaseViewBindingFragment<HomeFragmentBinding>() {
+class HomeFragment :
+    BaseVmFragment<HomeFragmentBinding, HomeViewModel>(HomeFragmentBinding::inflate) {
 
-    private val viewModel : HomeViewModel by viewModels()
-    // 等价于 ViewModelProvider(this)[HomeViewModel::class.java]
+    private lateinit var articleAdapter: ArticleAdapter
 
-    override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): HomeFragmentBinding {
-        return HomeFragmentBinding.inflate(inflater, container, false)
-    }
+    override fun viewModelClass(): Class<HomeViewModel> = HomeViewModel::class.java
 
     override fun observe() {
-        viewModel.getBannerObserve().observe(this) {
-            binding?.bannerView!!.setDatas(it)
+        mViewModel.apply {
+            getBannerObserve().observe(viewLifecycleOwner) {
+                mBinding?.bannerView!!.setDatas(it)
+            }
+            getArticleObserve().observe(viewLifecycleOwner) {
+                articleAdapter.setList(it)
+            }
+
+            loadMoreStatus.observe(viewLifecycleOwner) {
+                articleAdapter.loadMoreModule.setLoadMoreStatus(it)
+            }
+
+            reloadStatus.observe(viewLifecycleOwner) {
+//                mBinding?.reloadView?.root?.isVisible = it
+            }
         }
     }
 
     override fun initView() {
-        initBanner()
-    }
-
-    override fun initData() {
-        viewModel.getBannerData()
-    }
-
-
-    private fun initBanner() {
-        binding?.bannerView!!.setAdapter(BannerImageAdapter2(mutableListOf(), requireContext()))
+        mBinding?.bannerView!!.setAdapter(BannerImageAdapter2(mutableListOf(), requireContext()))
             .addBannerLifecycleObserver(this)
             .setIndicator(CircleIndicator(requireContext()))
             .setOnBannerListener { data, position ->
-                BrowserUtils.openInBrowser(requireContext(), (data as Banner).url)
+                val banner: Banner = (data as Banner)
+                BrowserFragment.openUrl(requireContext(), Triple(banner.id, banner.title, banner.url))
             }
+            .start()
+
+
+        articleAdapter = ArticleAdapter().also {
+            it.loadMoreModule.setOnLoadMoreListener {
+                mViewModel.loadMoreArticleList()
+            }
+            it.setOnItemClickListener { adapter, v, position ->
+                val article: Article = it.data[position]
+                BrowserFragment.openUrl(requireContext(), Triple(article.id, article.title, article.link))
+            }
+
+            it.setOnItemChildClickListener { _, view, position ->
+                val article = it.data[position]
+                if (view.id == R.id.iv_collect) {
+                    view.isSelected = !view.isSelected
+//                    if (article.collect) {
+//                        mViewModel.uncollect(article.id)
+//                    } else {
+//                        mViewModel.collect(article.id)
+//                    }
+                }
+            }
+            mBinding?.recyclerView?.adapter = it
+        }
+
+
     }
 
+    override fun initData() {
+        mViewModel.getBannerData()
+        mViewModel.getArticleData()
+    }
 
 }
