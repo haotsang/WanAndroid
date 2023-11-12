@@ -96,4 +96,12 @@ interface ApiService {
     @GET("/article/list/{page}/json")
     suspend fun getArticleList(@Path("page") page: Int): ApiResult<Pagination<Article>>
 
+
+    /**
+     * 问答
+     * pageId,拼接在链接上，例如上面的1
+     */
+    @GET("wenda/list/{page}/json")
+    suspend fun getQuestionList(@Path("page") page: Int): ApiResult<Pagination<Article>>
+
 }
