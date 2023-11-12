@@ -1,4 +1,4 @@
-package com.haotsang.wanandroid.ui.architecture
+package com.haotsang.wanandroid.ui.discovery.navigation
 
 import android.view.LayoutInflater
 import android.widget.TextView
@@ -6,35 +6,29 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.flexbox.FlexboxLayout
 import com.haotsang.wanandroid.R
-import com.haotsang.wanandroid.model.bean.Category
-import com.haotsang.wanandroid.ui.architecture.children.TreeChildFragment
-import com.haotsang.wanandroid.ui.main.MainActivity
-import com.haotsang.wanandroid.utils.ext.activity
+import com.haotsang.wanandroid.model.bean.Article
+import com.haotsang.wanandroid.model.bean.Navigation
 import java.util.LinkedList
 import java.util.Queue
 
-class ArchitectureAdapter(
-    data: MutableList<Category>? = null
-) : BaseQuickAdapter<Category, BaseViewHolder>(R.layout.architecture_rv_item, data) {
+
+class NavigationAdapter(
+    data: MutableList<Navigation>? = null
+) : BaseQuickAdapter<Navigation, BaseViewHolder>(R.layout.navigation_rv_item, data) {
 
     private var mInflater: LayoutInflater? = null
     private val mFlexItemTextViewCaches: Queue<TextView> = LinkedList()
 
-    override fun convert(holder: BaseViewHolder, item: Category) {
+    var onItemClickListener: ((article: Article) -> Unit)? = null
+
+    override fun convert(holder: BaseViewHolder, item: Navigation) {
         holder.setText(R.id.tv_title, item.name)
         val fbl: FlexboxLayout = holder.getView(R.id.fbl)
 
-        for (cate in item.children) {
+        for (article in item.articles) {
             val tvChild =  createOrGetCacheFlexItemTextView(fbl)?.apply {
-                text = cate.name
-                setOnClickListener {
-                    (context.activity as MainActivity).switchFragmentPage(
-                        TreeChildFragment.newInstance(
-                            1,
-                            cate.children
-                        )
-                    )
-                }
+                text = article.title
+                setOnClickListener { onItemClickListener?.invoke(article) }
             }
             fbl.addView(tvChild)
         }
@@ -59,7 +53,7 @@ class ArchitectureAdapter(
         if (mInflater == null) {
             mInflater = LayoutInflater.from(fbl.context)
         }
-        return mInflater?.inflate(R.layout.architecture_rv_child_item, fbl, false) as? TextView
+        return mInflater?.inflate(R.layout.navigation_rv_child_item, fbl, false) as? TextView
 
     }
 }

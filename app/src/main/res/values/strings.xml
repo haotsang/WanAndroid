@@ -2,7 +2,7 @@
     <string name="app_name">WanAndroid</string>
 
     <string name="main_nav_home">首页</string>
-    <string name="main_nav_question">问答</string>
+    <string name="main_nav_discovery">发现</string>
     <string name="main_nav_architecture">体系</string>
     <string name="main_nav_profile">我的</string>
     <string name="common_loading">加载中...</string>
@@ -61,5 +61,6 @@
     <string name="top">置顶</string>
     <string name="fresh">新</string>
     <string name="anonymous">匿名</string>
+    <string name="press_again_to_exit">再按一次退出</string>
 
 </resources>

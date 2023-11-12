@@ -1,4 +1,4 @@
-package com.haotsang.wanandroid.ui.question
+package com.haotsang.wanandroid.ui.discovery.question
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

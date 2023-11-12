@@ -1,7 +1,8 @@
-package com.haotsang.wanandroid.ui.navigation
+package com.haotsang.wanandroid.ui.discovery.navigation
 
 import com.haotsang.wanandroid.base.BaseVmFragment
 import com.haotsang.wanandroid.databinding.NavigationFragmentBinding
+import com.haotsang.wanandroid.ui.browser.BrowserFragment
 
 class NavigationFragment :
     BaseVmFragment<NavigationFragmentBinding, NavigationViewModel>(NavigationFragmentBinding::inflate) {
@@ -24,6 +25,9 @@ class NavigationFragment :
         flexboxLayoutManager.setAlignItems(com.google.android.flexbox.AlignItems.STRETCH)
 
         adapter = NavigationAdapter()
+        adapter.onItemClickListener = { article ->
+            BrowserFragment.openUrl(this.parentFragment, Triple(article.id, article.title, article.link))
+        }
         mBinding?.recyclerview?.layoutManager = flexboxLayoutManager
         mBinding?.recyclerview?.adapter = adapter
     }

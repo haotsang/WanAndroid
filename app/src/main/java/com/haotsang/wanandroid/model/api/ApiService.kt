@@ -9,6 +9,7 @@ import com.haotsang.wanandroid.model.bean.Pagination
 import com.haotsang.wanandroid.model.bean.PointRank
 import com.haotsang.wanandroid.model.bean.PointRecord
 import com.haotsang.wanandroid.model.bean.UserInfo
+import com.haotsang.wanandroid.model.core.StatusData
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -43,12 +44,18 @@ interface ApiService {
     @GET("tree/json")
     suspend fun getArticleCategories(): ApiResult<MutableList<Category>>
 
-    //知识体系下的文章
+    /**
+     * 知识体系下的文章
+     * 方法：GET
+     * 参数：
+     * cid 分类的id，上述二级目录的id
+     * 页码：拼接在链接上，从0开始。
+     */
     @GET("article/list/{page}/json?")
     suspend fun getArticleChildren(
         @Path("page") page: Int,
         @Query("cid") cid: Int
-    ): ApiResult<MutableList<Article>>
+    ): ApiResult<Pagination<Article>>
 
 
     @GET("hotkey/json")

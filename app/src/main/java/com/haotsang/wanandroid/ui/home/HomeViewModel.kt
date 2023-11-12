@@ -6,7 +6,6 @@ import com.haotsang.wanandroid.base.BaseViewModel
 import com.haotsang.wanandroid.common.loadmore.LoadMoreStatus
 import com.haotsang.wanandroid.model.bean.Article
 import com.haotsang.wanandroid.model.bean.Banner
-import com.haotsang.wanandroid.utils.ext.concat
 
 class HomeViewModel : BaseViewModel() {
 

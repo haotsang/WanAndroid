@@ -34,7 +34,7 @@ class MinePointsFragment :
         mBinding?.toolbar?.menu?.apply {
             add(0,0,0,"rank").setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             findItem(0).setOnMenuItemClickListener {
-                (requireActivity() as MainActivity).switchFragmentPage(PointsRankFragment())
+                (requireActivity() as MainActivity).switchFragmentPage(this@MinePointsFragment, PointsRankFragment())
                 true
             }
         }

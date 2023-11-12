@@ -10,6 +10,7 @@ abstract class BaseVmFragment<VB : ViewBinding, VM : BaseViewModel>(inflate: (La
 
     protected open lateinit var mViewModel: VM
 
+    private var lazyLoaded = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,4 +56,19 @@ abstract class BaseVmFragment<VB : ViewBinding, VM : BaseViewModel>(inflate: (La
     open fun setListener() {}
 
 
+    override fun onResume() {
+        super.onResume()
+        // 实现懒加载
+        if (!lazyLoaded) {
+            lazyLoadData()
+            lazyLoaded = true
+        }
+    }
+
+    /**
+     * 懒加载数据
+     */
+    open fun lazyLoadData() {
+        // Override if need
+    }
 }

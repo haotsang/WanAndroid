@@ -1,4 +1,4 @@
-package com.haotsang.wanandroid.ui.navigation
+package com.haotsang.wanandroid.ui.discovery.navigation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

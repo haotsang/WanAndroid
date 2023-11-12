@@ -16,7 +16,7 @@ class LoginFragment :
             requireActivity().supportFragmentManager.popBackStack()
         }
         mBinding?.tvGoRegister?.setOnClickListener {
-            (requireActivity() as MainActivity).switchFragmentPage(RegisterFragment())
+            (requireActivity() as MainActivity).switchFragmentPage(this, RegisterFragment())
         }
 
         mBinding?.btnLogin?.setOnClickListener {

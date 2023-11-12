@@ -6,7 +6,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.FrameLayout
-import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import com.haotsang.wanandroid.R
 import com.haotsang.wanandroid.base.BaseFragment
 import com.haotsang.wanandroid.databinding.BrowserFragmentBinding
@@ -59,8 +59,8 @@ class BrowserFragment : BaseFragment<BrowserFragmentBinding>(BrowserFragmentBind
         private const val TITLE = "_title"
         private const val URL = "_url"
 
-        fun openUrl(context: Context, triple: Triple<Long, String?, String?>) {
-            (context.activity as MainActivity).switchFragmentPage(newInstance(triple))
+        fun openUrl(fragment: Fragment?, triple: Triple<Long, String?, String?>) {
+            (fragment?.activity as? MainActivity)?.switchFragmentPage(fragment, newInstance(triple))
         }
 
         private fun newInstance(triple: Triple<Long, String?, String?>): BrowserFragment {

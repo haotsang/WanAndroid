@@ -1,4 +1,4 @@
-package com.haotsang.wanandroid.ui.question
+package com.haotsang.wanandroid.ui.discovery.question
 
 import com.haotsang.wanandroid.R
 import com.haotsang.wanandroid.base.BaseFragment
@@ -38,7 +38,7 @@ class QuestionFragment : BaseVmFragment<QuestionFragmentBinding, QuestionViewMod
             }
             it.setOnItemClickListener { adapter, v, position ->
                 val article: Article = it.data[position]
-                BrowserFragment.openUrl(requireContext(), Triple(article.id, article.title, article.link))
+                BrowserFragment.openUrl(this, Triple(article.id, article.title, article.link))
             }
 
             it.setOnItemChildClickListener { _, view, position ->

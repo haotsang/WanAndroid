@@ -2,7 +2,6 @@ package com.haotsang.wanandroid.ui.main
 
 import android.animation.ObjectAnimator
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnticipateInterpolator
@@ -18,7 +17,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.bumptech.glide.signature.ObjectKey
+import com.haotsang.wanandroid.R
 import com.haotsang.wanandroid.base.BaseVmActivity
 import com.haotsang.wanandroid.databinding.MainActivityBinding
 import com.haotsang.wanandroid.utils.InsetsWithKeyboardCallback
@@ -98,18 +97,20 @@ class MainActivity :
         }
     }
 
-    fun switchFragmentPage(targetFragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-//        currentPage?.let { transaction.hide(it) }
-        supportFragmentManager.fragments.forEach {
-            transaction.hide(it)
-        }
-        if (targetFragment.isAdded && !targetFragment.isDetached) {
-            transaction.show(targetFragment)
-        } else {
-            transaction.add(mBinding.mainContent.id, targetFragment, null)
-        }
-        transaction.addToBackStack(null).commitAllowingStateLoss()
+    fun switchFragmentPage(current: Fragment?, targetFragment: Fragment?) {
+        var currentFragment: Fragment? = current
+//        currentFragment = if (currentFragment?.parentFragment != null) {
+//            currentFragment.parentFragment
+//        } else {
+//            current
+//        }
+
+        supportFragmentManager.beginTransaction().apply {
+            currentFragment?.let { if (it.isVisible) hide(it) }
+            targetFragment?.let {
+                if (it.isAdded) show(it) else add(R.id.main_content, it).addToBackStack(null)
+            }
+        }.commit()
     }
 
     private fun initSplashScreen() {

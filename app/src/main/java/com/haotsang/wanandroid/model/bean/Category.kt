@@ -1,6 +1,7 @@
 package com.haotsang.wanandroid.model.bean
 
 import androidx.annotation.Keep
+import java.io.Serializable
 
 @Keep
 data class Category(
@@ -12,4 +13,4 @@ data class Category(
     val userControlSetTop: Boolean,
     val visible: Int,
     val children: MutableList<Category>
-)
+) : Serializable

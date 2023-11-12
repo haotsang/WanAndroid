@@ -7,7 +7,7 @@
     <item
         android:id="@+id/nav_fragment2"
         android:icon="@drawable/main_nav_question_answer_ic"
-        android:title="@string/main_nav_question" />
+        android:title="@string/main_nav_discovery" />
     <item
         android:id="@+id/nav_fragment3"
         android:icon="@drawable/main_nav_architecture_ic"

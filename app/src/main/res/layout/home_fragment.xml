@@ -19,20 +19,34 @@
             android:layout_height="match_parent"
             app:contentScrim="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
+            app:toolbarId="@+id/toolbar2">
 
-            <com.youth.banner.Banner
-                android:id="@+id/bannerView"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="@dimen/layout_margin_16"
-                android:clickable="true"
-                android:focusable="true"
-                app:banner_indicator_selected_color="@color/primary"
-                app:banner_radius="@dimen/dp_10"
-                app:banner_loop_time="2000"
-                app:banner_auto_loop="true"
-                app:layout_collapseMode="pin" />
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:title="首页"/>
+                <com.youth.banner.Banner
+                    android:id="@+id/bannerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_margin="@dimen/layout_margin_16"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:banner_indicator_selected_color="@color/primary"
+                    app:banner_radius="@dimen/dp_10"
+                    app:banner_loop_time="2000"
+                    app:banner_auto_loop="true"
+                    app:layout_collapseMode="pin" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -41,10 +55,25 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@null" />
+
+    <include
+        android:id="@+id/reloadView"
+        layout="@layout/include_reload"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

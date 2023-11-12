@@ -28,23 +28,23 @@ class ProfileFragment : BaseVmFragment<ProfileFragmentBinding, ProfileViewModel>
             if (isLogin()) {
 
             } else {
-                (requireActivity() as MainActivity).switchFragmentPage(LoginFragment())
+                (requireActivity() as MainActivity).switchFragmentPage(this, LoginFragment())
             }
         }
 
 
         mBinding?.itemContainer?.apply {
-            profileItemAbout.setOnClickListener { (requireActivity() as MainActivity).switchFragmentPage(AboutFragment()) }
+            profileItemAbout.setOnClickListener { (requireActivity() as MainActivity).switchFragmentPage(this@ProfileFragment, AboutFragment()) }
         }
 
 
         mBinding?.userCoinCount?.setOnClickListener {
             if (isLogin()) {
-                (requireActivity() as MainActivity).switchFragmentPage(MinePointsFragment())
+                (requireActivity() as MainActivity).switchFragmentPage(this, MinePointsFragment())
             }
         }
         mBinding?.settingFabIcon?.setOnClickListener {
-            (requireActivity() as MainActivity).switchFragmentPage(SettingFragment())
+            (requireActivity() as MainActivity).switchFragmentPage(this, SettingFragment())
         }
 
         updateUi()

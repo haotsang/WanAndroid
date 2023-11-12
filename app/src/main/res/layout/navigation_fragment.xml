@@ -3,15 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.navigation.NavigationFragment">
+    tools:context=".ui.discovery.navigation.NavigationFragment">
 
-    <com.haotsang.wanandroid.common.view.NestedScrollableHost
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.haotsang.wanandroid.common.view.NestedScrollableHost>
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

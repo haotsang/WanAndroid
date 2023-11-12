@@ -4,6 +4,6 @@ import com.haotsang.wanandroid.model.api.RetrofitClient
 
 class TreeChildRepository {
 
-    suspend fun getTreeChild(page: Int, cid: Int) = RetrofitClient.apiService.getArticleChildren(page, cid).apiData()
+    suspend fun getArticleListByCid(page: Int, cid: Int) = RetrofitClient.apiService.getArticleChildren(page, cid).apiData()
 
 }

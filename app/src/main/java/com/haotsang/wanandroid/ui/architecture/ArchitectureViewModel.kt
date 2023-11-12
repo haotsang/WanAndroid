@@ -7,22 +7,31 @@ import com.haotsang.wanandroid.model.bean.Category
 
 class ArchitectureViewModel : BaseViewModel() {
 
+    val loadingStatus = MutableLiveData<Boolean>()
+    val reloadStatus = MutableLiveData<Boolean>()
+
     private val repository by lazy { ArchitectureRepository() }
 
-
-    private val architecture: MutableLiveData<List<Category>?> by lazy {
+    private val categories: MutableLiveData<List<Category>?> by lazy {
         MutableLiveData<List<Category>?>()
     }
 
 
-    fun getArchitectureObserve(): LiveData<List<Category>?> {
-        return architecture
+    fun getCategoriesObserve(): LiveData<List<Category>?> {
+        return categories
     }
 
-    fun getArchitectureData() {
+    fun getArticleCategory() {
         launch(
             block = {
-                architecture.postValue(repository.getArchitecture())
+                loadingStatus.value = true
+                reloadStatus.value = false
+                categories.postValue(repository.getArticleCategories())
+                loadingStatus.value = false
+            },
+            error = {
+                loadingStatus.value = false
+                reloadStatus.value = true
             }
         )
     }

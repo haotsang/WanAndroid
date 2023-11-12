@@ -1,4 +1,4 @@
-package com.haotsang.wanandroid.ui.navigation
+package com.haotsang.wanandroid.ui.discovery.navigation
 
 import com.haotsang.wanandroid.model.api.RetrofitClient
 
